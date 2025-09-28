@@ -41,7 +41,7 @@ async function bootstrap() {
   });
   
   // 启动服务器
-  const port = 3000;
+  const port = process.env.PORT || 3000;
   await app.listen(port);
   
   logger.log(`应用已启动，监听端口: ${port}`);

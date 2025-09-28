@@ -17,7 +17,7 @@ export class FilesController {
   @Post('upload')
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file'))
-async uploadFile(
+  async uploadFile(
     @Request() req,
     @UploadedFile() file: Express.Multer.File,
     @Query() uploadFileDto: UploadFileDto,
@@ -39,7 +39,7 @@ async uploadFile(
    */
   @Delete('delete')
   @UseGuards(JwtAuthGuard)
-async deleteFile(@Body() deleteFileDto: DeleteFileDto) {
+  async deleteFile(@Body() deleteFileDto: DeleteFileDto) {
     const result = await this.filesService.deleteFile(deleteFileDto.filePath);
     return {
       code: ReturnCodes.SUCCESS,
